@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facebook Lifecycle: Before and After DevOps</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+    .header {
+      background: #1877f2;
+      color: #fff;
+      padding: 32px 0 18px 0;
+      text-align: center;
+      border-bottom-left-radius: 32px;
+      border-bottom-right-radius: 32px;
+      box-shadow: 0 2px 8px rgba(24,119,242,0.08);
+    }
+    .header .logo {
+      font-size: 2.8rem;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+    .header h1 {
+      font-size: 2.2rem;
+      margin: 0 0 8px 0;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .header p {
+      font-size: 1.15rem;
+      margin: 0;
+      opacity: 0.95;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 40px auto 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      padding: 40px 32px 32px 32px;
+    }
+    .lifecycle {
+      display: flex;
+      justify-content: space-between;
+      gap: 48px;
+      margin-bottom: 32px;
+    }
+    .column {
+      flex: 1;
+      background: #f7f9fa;
+      border-radius: 12px;
+      padding: 32px 20px 24px 20px;
+      box-shadow: 0 2px 8px rgba(24,119,242,0.04);
+      transition: box-shadow 0.2s;
+      position: relative;
+    }
+    .column:hover {
+      box-shadow: 0 4px 16px rgba(24,119,242,0.10);
+    }
+    .column h2 {
+      text-align: center;
+      color: #1877f2;
+      margin-bottom: 22px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .steps {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .steps li {
+      background: #e4e6eb;
+      margin: 14px 0;
+      padding: 14px 18px 14px 44px;
+      border-radius: 8px;
+      color: #333;
+      font-size: 1.05rem;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+      position: relative;
+      min-height: 32px;
+      display: flex;
+      align-items: center;
+    }
+    .steps li .fa {
+      position: absolute;
+      left: 16px;
+      color: #1877f2;
+      font-size: 1.1em;
+      opacity: 0.85;
+    }
+    /* Icons for each step */
+    .steps li:nth-child(1) .fa { content: '\f0ae'; }
+    .steps li:nth-child(2) .fa { content: '\f121'; }
+    .steps li:nth-child(3) .fa { content: '\f058'; }
+    .steps li:nth-child(4) .fa { content: '\f46d'; }
+    .steps li:nth-child(5) .fa { content: '\f0c2'; }
+    .steps li:nth-child(6) .fa { content: '\f560'; }
+    .steps li:nth-child(7) .fa { content: '\f233'; }
+    .steps li:nth-child(8) .fa { content: '\f06e'; }
+    .steps li:nth-child(9) .fa { content: '\f188'; }
+    @media (max-width: 900px) {
+      .lifecycle {
+        flex-direction: column;
+        gap: 32px;
+      }
+    }
+    .stats-section {
+      margin: 0 auto;
+      max-width: 800px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(24,119,242,0.08);
+      padding: 40px 32px 32px 32px;
+      margin-top: 40px;
+    }
+    .stats-section h2 {
+      text-align: center;
+      color: #1877f2;
+      margin-top: 0;
+      margin-bottom: 24px;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    .stats-table-wrapper {
+      overflow-x: auto;
+    }
+    .stats-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0;
+      font-size: 1.05rem;
+      background: #f7f9fa;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(24,119,242,0.04);
+    }
+    .stats-table th, .stats-table td {
+      border: 1px solid #e4e6eb;
+      padding: 14px 18px;
+      text-align: center;
+    }
+    .stats-table th {
+      background: #f0f2f5;
+      color: #1877f2;
+      font-weight: bold;
+      font-size: 1.08rem;
+    }
+    .stats-table tr:nth-child(even) {
+      background: #e9ebee;
+    }
+    .stats-table td .fa {
+      margin-right: 8px;
+      color: #1877f2;
+      font-size: 1.1em;
+      vertical-align: middle;
+    }
+    .footer {
+      text-align: center;
+      color: #888;
+      font-size: 0.98rem;
+      margin: 48px 0 18px 0;
+      letter-spacing: 0.2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="logo"><i class="fab fa-facebook"></i></span>
+    <h1>Facebook Lifecycle: Before and After DevOps</h1>
+    <p>How DevOps transforms the way Facebook (or any modern app) is built, deployed, and improved.</p>
+  </div>
+  <div class="container">
+    <div class="lifecycle">
+      <div class="column">
+        <h2>Before DevOps</h2>
+        <ul class="steps">
+          <li><i class="fa fa-lightbulb"></i> Requirements Gathering</li>
+          <li><i class="fa fa-code"></i> Development</li>
+          <li><i class="fa fa-check-circle"></i> Code Review</li>
+          <li><i class="fa fa-vials"></i> Manual Testing</li>
+          <li><i class="fa fa-cloud-upload-alt"></i> Staging Deployment</li>
+          <li><i class="fa fa-user-shield"></i> Manual Release Approval</li>
+          <li><i class="fa fa-server"></i> Production Deployment (Manual)</li>
+          <li><i class="fa fa-eye"></i> Operations & Monitoring (Siloed)</li>
+          <li><i class="fa fa-bug"></i> Bug Fixes (Slow Feedback)</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h2>After DevOps</h2>
+        <ul class="steps">
+          <li><i class="fa fa-comments"></i> Continuous Requirements & Feedback</li>
+          <li><i class="fa fa-bolt"></i> Agile Development</li>
+          <li><i class="fa fa-robot"></i> Automated Code Review & Testing</li>
+          <li><i class="fa fa-sync-alt"></i> Continuous Integration (CI)</li>
+          <li><i class="fa fa-rocket"></i> Automated Staging & Production Deployment (CD)</li>
+          <li><i class="fa fa-chart-line"></i> Real-time Monitoring & Logging</li>
+          <li><i class="fa fa-undo"></i> Automated Rollbacks</li>
+          <li><i class="fa fa-bug"></i> Rapid Bug Fixes & Updates</li>
+          <li><i class="fa fa-users"></i> Collaboration between Dev & Ops</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="stats-section">
+    <h2>Key Stats: Before vs After DevOps</h2>
+    <div class="stats-table-wrapper">
+      <table class="stats-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Before DevOps</th>
+            <th>After DevOps</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><i class="fa fa-rocket"></i> Deployment Frequency</td>
+            <td>Monthly/Quarterly</td>
+            <td><i class="fa fa-arrow-up"></i> Multiple times per day</td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-clock"></i> Lead Time for Changes</td>
+            <td>Weeks/Months</td>
+            <td><i class="fa fa-bolt"></i> Hours/Days</td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-exclamation-triangle"></i> Change Failure Rate</td>
+            <td>20-30%</td>
+            <td><i class="fa fa-arrow-down"></i> 5-10%</td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-life-ring"></i> Mean Time to Recovery</td>
+            <td>Days</td>
+            <td><i class="fa fa-stopwatch"></i> Minutes/Hours</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="footer">
+    &copy; 2024 Facebook Lifecycle Demo &mdash; Designed for DevOps transformation showcase
+  </div>
+</body>
+</html>
